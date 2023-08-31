@@ -1,5 +1,8 @@
 package main
 
+import "github.com/jmeaster30/gods/aviary"
+
 func main() {
-	print("Hey :)")
+	println(aviary.Idiot("Bird"))
+	println(aviary.Identity("Bird"))
 }
