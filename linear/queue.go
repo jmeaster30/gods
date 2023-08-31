@@ -1,4 +1,4 @@
-package gods
+package linear
 
 type Queue[T any] struct {
 	store []T

@@ -1,4 +1,4 @@
-package gods
+package composite
 
 type Either[T any, U any] struct {
 	leftExists  bool

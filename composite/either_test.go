@@ -1,6 +1,10 @@
-package gods
+package composite
 
-import "testing"
+import (
+	"testing"
+
+	helpers "github.com/jmeaster30/gods/test_helpers"
+)
 
 func TestEitherIsLeft(t *testing.T) {
 	either_value := Left[int, string](10)
@@ -30,7 +34,7 @@ func TestEitherLeftOnLeft(t *testing.T) {
 func TestEitherLeftOnRight(t *testing.T) {
 	either_value := Right[int, string]("what")
 
-	shouldPanic(t, func() {
+	helpers.ShouldPanic(t, func() {
 		_ = either_value.Left()
 	}, "Expected calling left on a right Either value to panic but it didn't")
 }
@@ -47,7 +51,7 @@ func TestEitherRightOnRight(t *testing.T) {
 func TestEitherRightOnLeft(t *testing.T) {
 	either_value := Left[int, string](3000)
 
-	shouldPanic(t, func() {
+	helpers.ShouldPanic(t, func() {
 		_ = either_value.Right()
 	}, "Expected calling right on a left Either value to panic but it didn't")
 }

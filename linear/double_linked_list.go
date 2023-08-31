@@ -1,4 +1,4 @@
-package gods
+package linear
 
 type DoubleLinkedList[T any] struct {
 	Data     T

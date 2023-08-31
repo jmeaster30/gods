@@ -1,4 +1,4 @@
-package gods
+package linear
 
 type Stack[T any] struct {
 	store []T

@@ -1,4 +1,4 @@
-package gods
+package composite
 
 type Optional[T any] struct {
 	hasValue bool

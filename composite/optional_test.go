@@ -1,6 +1,10 @@
-package gods
+package composite
 
-import "testing"
+import (
+	"testing"
+
+	helpers "github.com/jmeaster30/gods/test_helpers"
+)
 
 func TestOptionalSome(t *testing.T) {
 	optional_number := Some[int](10)
@@ -22,7 +26,7 @@ func TestOptionalNone(t *testing.T) {
 		t.Error("Expected the optional number to not have a value but it did :(")
 	}
 
-	shouldPanic(t, func() {
+	helpers.ShouldPanic(t, func() {
 		_ = optional_number.Value()
 	}, "Expected getting the value from a none to panic!")
 }

@@ -1,4 +1,4 @@
-package gods
+package linear
 
 type LinkedList[T any] struct {
 	data T

@@ -1,8 +1,8 @@
-package gods
+package helpers
 
 import "testing"
 
-func shouldPanic(t *testing.T, f func(), errorMessage string) {
+func ShouldPanic(t *testing.T, f func(), errorMessage string) {
 	t.Helper()
 	defer func() { _ = recover() }()
 	f()
