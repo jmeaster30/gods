@@ -21,6 +21,9 @@ func (r *RingBuffer[T]) PushFront(value T) {
 		r.end = composite.Some[uint64](r.start)
 	}
 	r.start = ((r.start - 1) + r.capacity) % r.capacity
+	if r.start == r.end.Value() {
+		r.end = composite.Some[uint64](((r.end.Value() - 1) + r.capacity) % r.capacity)
+	}
 
 	r.data[r.start] = value
 }
@@ -45,6 +48,9 @@ func (r *RingBuffer[T]) PushBack(value T) {
 		r.end = composite.Some[uint64](r.start)
 	} else {
 		r.end = composite.Some[uint64]((r.end.Value() + 1) % r.capacity)
+		if r.start == r.end.Value() {
+			r.start = (r.start + 1) % r.capacity
+		}
 	}
 
 	// r.end will always have a value here!
