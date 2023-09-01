@@ -2,18 +2,22 @@ package aviary
 
 // https://www.angelfire.com/tx4/cus/combinator/birds.html
 
-func Kestrel[T any, U any](a T, b U) T {
+func Bluebird[A any, B any, C any](a func(B) C, b func(A) B, c A) C {
+	return a(b(c))
+}
+
+func Idiot[A any](a A) A {
 	return a
 }
 
-func Idiot[T any](a T) T {
+func Identity[A any](a A) A {
+	return Starling(Kestrel[A, A], CurryTwo(Kestrel[A, A], a), a)
+}
+
+func Kestrel[A any, B any](a A, b B) A {
 	return a
 }
 
-func Identity[T any](a T) T {
-	return Starling(Kestrel[T, T], CurryTwo(Kestrel[T, T], a), a)
-}
-
-func Starling[A any, B any, C any](f func(A, B) C, g func(A) B, h A) C {
-	return f(h, g(h))
+func Starling[A any, B any, C any](a func(A, B) C, b func(A) B, c A) C {
+	return a(c, b(c))
 }
