@@ -104,7 +104,7 @@ func (r *RingBuffer[T]) Size() uint64 {
 
 	end := r.end.Value()
 	if r.start < end {
-		return end - r.start
+		return end - r.start + 1
 	} else if r.start == end {
 		return 1
 	} else {
