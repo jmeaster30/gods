@@ -1,5 +1,5 @@
 #!/bin/bash
-go test -v -coverprofile="coverage.text" ./aviary ./composite ./linear
+go test -v -coverprofile="coverage.text" ./aviary ./composite ./linear ./trees
 go tool cover -html="coverage.text" -o "coverage.html"
 
 while getopts o arg;

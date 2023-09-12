@@ -1,6 +1,10 @@
 package linear
 
-import "testing"
+import (
+	"testing"
+
+	"github.com/jmeaster30/gods/composite"
+)
 
 func TestQueuePush(t *testing.T) {
 	queue := NewQueue[int]()
@@ -12,8 +16,9 @@ func TestQueuePush(t *testing.T) {
 		t.Errorf("The queue was expected to be 3 but actually was %d :(", queue.Size())
 	}
 
-	if *queue.Peek() != 1 {
-		t.Errorf("The front of the queue was expected to be 3 but actually was %d :(", *queue.Peek())
+	peeked := queue.Peek()
+	if peeked != composite.Some(1) {
+		t.Errorf("The front of the queue was expected to be 3 but actually was %v :(", peeked)
 	}
 }
 
@@ -23,24 +28,24 @@ func TestQueuePop(t *testing.T) {
 	queue.Push(2)
 	queue.Push(3)
 
-	val := *queue.Pop()
-	if val != 1 {
-		t.Errorf("The queue was expected to pop 1 but actually was %d :(", val)
+	val := queue.Pop()
+	if val != composite.Some(1) {
+		t.Errorf("The queue was expected to pop 1 but actually was %v :(", val)
 	}
 
-	val = *queue.Pop()
-	if val != 2 {
-		t.Errorf("The queue was expected to pop 2 but actually was %d :(", val)
+	val = queue.Pop()
+	if val != composite.Some(2) {
+		t.Errorf("The queue was expected to pop 2 but actually was %v :(", val)
 	}
 
-	val = *queue.Pop()
-	if val != 3 {
-		t.Errorf("The queue was expected to pop 3 but actually was %d :(", val)
+	val = queue.Pop()
+	if val != composite.Some(3) {
+		t.Errorf("The queue was expected to pop 3 but actually was %v :(", val)
 	}
 
 	last := queue.Pop()
-	if last != nil {
-		t.Errorf("The queue was expected to pop nil but actually was %d :(", last)
+	if last != composite.None[int]() {
+		t.Errorf("The queue was expected to pop nil but actually was %v :(", last)
 	}
 }
 

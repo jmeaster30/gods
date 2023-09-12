@@ -14,6 +14,21 @@ func NewDoubleLinkedList[T any](data T) *DoubleLinkedList[T] {
 	}
 }
 
+func (list *DoubleLinkedList[T]) Add(data T) {
+	list.Append(data)
+}
+
+/*
+func (list *DoubleLinkedList[T]) Remove(data T) {
+	current := list.First()
+	for current != nil {
+		if current.Data == data {
+
+		}
+	}
+}
+*/
+
 func (list *DoubleLinkedList[T]) First() *DoubleLinkedList[T] {
 	current := list
 	for current.previous != nil {
