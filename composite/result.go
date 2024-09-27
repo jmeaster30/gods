@@ -17,6 +17,10 @@ func (result Result[T]) IsError() bool {
 	return result.err != nil
 }
 
+func (result Result[T]) ErrorIs(err error) bool {
+	return result.err == err
+}
+
 func (result Result[T]) Value() T {
 	if result.data == nil {
 		panic(result.err)
