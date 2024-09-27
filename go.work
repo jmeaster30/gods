@@ -7,5 +7,5 @@ use (
 	./linear
   ./trees
 
-  ./helpers
+  ./test_helpers
 )
